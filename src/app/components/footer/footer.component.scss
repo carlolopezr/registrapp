@@ -1,4 +1,8 @@
 .footer{
-    --ion-background-color: #012c56;
-    --ion-text-color: rgb(255, 255, 255);
+    background: linear-gradient(90deg,#012c56 0%,#004f9e 100%);
+    color: rgb(255, 255, 255);
+    img{
+        height: 20px;
+        width: 80px;
+     }
 }
