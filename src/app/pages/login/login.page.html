@@ -4,20 +4,20 @@
   <form #loginForm="ngForm" (ngSubmit)="onSubmit()" >
     <ion-item>
       <ion-label position="floating">Usuario</ion-label>
-      <ion-input type="text" name="usuario" required [(ngModel)]="usuario.username"></ion-input>
+      <ion-input inputmode="text" clearInput="true" type="text" name="usuario" required [(ngModel)]="usuario.username"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Contraseña</ion-label>
-      <ion-input type="password" name="password" required [(ngModel)]="usuario.password"></ion-input>
+      <ion-input inputmode="text" clearInput="true" type="password" name="password" required [(ngModel)]="usuario.password"></ion-input>
     </ion-item>
     <ion-button type="submit" expand="block" shape="round" color="warning" mode="md">
-      Ingresar
+      <p>Ingresar</p> 
     </ion-button>
   </form>
 
-  <ion-text color="primary">
-    <b>Olvidé mi contraseña</b>
-  </ion-text>
+  <div> 
+    <p>Olvidé mi contraseña</p>
+  </div>
 </ion-content>
 
 <app-footer></app-footer>

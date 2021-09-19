@@ -24,3 +24,13 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+.ion-color-duoc-azul {
+    --ion-color-base: var(--ion-color-duoc-azul);
+    --ion-color-base-rgb: var(--ion-color-duoc-azul-rgb);
+    --ion-color-contrast: var(--ion-color-duoc-azul-contrast);
+    --ion-color-contrast-rgb: var(--ion-color-duoc-azul-contrast-rgb);
+    --ion-color-shade: var(--ion-color-duoc-azul-shade);
+    --ion-color-tint: var(--ion-color-duoc-azul-tint);
+  }
+  
