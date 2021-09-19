@@ -3,3 +3,10 @@ export interface Opcionmenu {
     texto:string;
     icono:string;
 }
+
+export interface Asignatura{
+    nombre:string;
+    codigo:string;
+    porcentaje:number;
+    seccion:string;
+}
