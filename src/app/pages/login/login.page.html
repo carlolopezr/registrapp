@@ -1,4 +1,10 @@
-<app-encabezado titulo="RegistrAPP"></app-encabezado>
+<!--<app-encabezado titulo="RegistrAPP"></app-encabezado>-->
+<ion-header>
+  <ion-toolbar class="ion-padding encabezado">
+    <ion-title>RegistrAPP</ion-title>
+    <ion-icon slot="end" name="power"></ion-icon>
+  </ion-toolbar>
+</ion-header>
 
 <ion-content class="ion-padding">
   <form #loginForm="ngForm" (ngSubmit)="onSubmit()" >
