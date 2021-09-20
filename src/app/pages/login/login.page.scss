@@ -1,0 +1,23 @@
+ion-item{
+    margin-top:25px;
+    --color:#012c56; //Color letra del input
+    //--highlight-color-valid: ; Cambia el color de la linea del input cuando esta valida
+    //--highlight-color-invalid: ; Cambia Color linea del input cuando esta invalida, funciona al hacerle clic altiro como focus igual
+    padding: 0 20px;
+}
+
+ion-button{
+    margin-top:50px;
+    padding: 0 20px;
+}
+
+ion-button p{
+    color:white;
+}
+
+div p{
+    text-align: center;
+    margin-top: 100px;
+    color:rgb(45, 70, 180);
+    text-decoration:underline;
+}

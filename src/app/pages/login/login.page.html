@@ -1,0 +1,23 @@
+<app-encabezado titulo="RegistrAPP"></app-encabezado>
+
+<ion-content class="ion-padding">
+  <form #loginForm="ngForm" (ngSubmit)="onSubmit()" >
+    <ion-item lines="inset" mode="md">
+      <ion-label position="floating">Usuario</ion-label>
+      <ion-input inputmode="text" type="text" name="usuario" required [(ngModel)]="usuario.username"></ion-input>
+    </ion-item>
+    <ion-item lines="inset" mode="md">
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input inputmode="text" type="password" name="password" required [(ngModel)]="usuario.password"></ion-input>
+    </ion-item>
+    <ion-button color="duoc-amarillo" strong="true" type="submit" shape="round" expand="block" mode="md">
+      <p>Ingresar</p> 
+    </ion-button>
+  </form>
+
+  <div> 
+    <p>Olvidé mi contraseña</p>
+  </div>
+</ion-content>
+
+<app-footer></app-footer>

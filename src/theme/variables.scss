@@ -3,6 +3,23 @@
 
 /** Ionic CSS Variables **/
 :root {
+
+  /**Color Duoc Amarillo**/
+  --ion-color-duoc-amarillo: #e3ae2e;
+  --ion-color-duoc-amarillo-rgb: 227,174,46;
+  --ion-color-duoc-amarillo-contrast: #000000;
+  --ion-color-duoc-amarillo-contrast-rgb: 0,0,0;
+  --ion-color-duoc-amarillo-shade: #c89928;
+  --ion-color-duoc-amarillo-tint: #e6b643;
+
+  /**Color Duoc Azul**/
+  --ion-color-duoc-azul: #012c56;
+  --ion-color-duoc-azul-rgb: 1,44,86;
+  --ion-color-duoc-azul-contrast: #ffffff;
+  --ion-color-duoc-azul-contrast-rgb: 255,255,255;
+  --ion-color-duoc-azul-shade: #01274c;
+  --ion-color-duoc-azul-tint: #1a4167;
+  
   /** primary **/
   --ion-color-primary: #3880ff;
   --ion-color-primary-rgb: 56, 128, 255;
