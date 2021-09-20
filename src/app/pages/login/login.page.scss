@@ -15,9 +15,12 @@ ion-button p{
     color:white;
 }
 
-div p{
+ion-text p{
     text-align: center;
     margin-top: 100px;
-    color:rgb(45, 70, 180);
-    text-decoration:underline;
+    text-decoration: underline;
+}
+
+ion-text:hover{
+    cursor:pointer;
 }
