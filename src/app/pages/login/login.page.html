@@ -2,15 +2,15 @@
 
 <ion-content class="ion-padding">
   <form #loginForm="ngForm" (ngSubmit)="onSubmit()" >
-    <ion-item>
+    <ion-item lines="inset" mode="md">
       <ion-label position="floating">Usuario</ion-label>
-      <ion-input inputmode="text" clearInput="true" type="text" name="usuario" required [(ngModel)]="usuario.username"></ion-input>
+      <ion-input inputmode="text" type="text" name="usuario" required [(ngModel)]="usuario.username"></ion-input>
     </ion-item>
-    <ion-item>
+    <ion-item lines="inset" mode="md">
       <ion-label position="floating">Contraseña</ion-label>
-      <ion-input inputmode="text" clearInput="true" type="password" name="password" required [(ngModel)]="usuario.password"></ion-input>
+      <ion-input inputmode="text" type="password" name="password" required [(ngModel)]="usuario.password"></ion-input>
     </ion-item>
-    <ion-button type="submit" expand="block" shape="round" color="warning" mode="md">
+    <ion-button color="duoc-amarillo" strong="true" type="submit" shape="round" expand="block" mode="md">
       <p>Ingresar</p> 
     </ion-button>
   </form>
