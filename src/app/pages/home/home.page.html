@@ -2,7 +2,7 @@
 
 <ion-content [fullscreen]="true">
     <ion-toolbar id="asignatura" color="d">
-        <ion-title>Bienvenido {{nombreUsuario}}</ion-title>
+        <ion-title class="ion-no-padding" >Bienvenido {{nombreUsuario}}</ion-title>
     </ion-toolbar>
     <ion-card>
         <ion-card-header id="card-header">
@@ -19,22 +19,20 @@
             </ion-grid>    
         </ion-card-header>
     </ion-card>
-    <ion-list>
+    <ion-list lines="none">
         <ion-item>
-            <ion-label>Escanear codigo QR</ion-label>
-            <ion-item>
-                <ion-avatar slot="end">
-                    <img src="../assets/image/qricon.jpg" />
-                </ion-avatar>
-            </ion-item>
-        </ion-item>
-        <ion-item>
-            <ion-label>Desconectarme</ion-label>
-            <ion-item>
-                <ion-avatar slot="end">
-                    <img src="image" />
-                </ion-avatar>
-            </ion-item>
+            <ion-grid fixed>
+                <ion-row>
+                    <ion-col size="2"></ion-col>
+                    <ion-col size="8">
+                        <a href=""> <img src="../assets/image/qricon.jpg" alt=""></a>
+                        <ion-button id="boton-qr" expand="block"  shape="round" color="duoc-amarillo">
+                          <p>Escanear codigo QR </p> 
+                        </ion-button>
+                    </ion-col>
+                    <ion-col size="2"></ion-col>
+                </ion-row>
+            </ion-grid>
         </ion-item>
     </ion-list>
 </ion-content>

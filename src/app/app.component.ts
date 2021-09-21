@@ -8,11 +8,13 @@ import { Opcionmenu } from './interfaces/opcionmenu';
 })
 export class AppComponent {
 
+  usuario:any;
+  
   opciones:Opcionmenu[]=[
     {
     destino:'home',
     icono:'home',
-    texto:'home',
+    texto:'Home',
     },
     {
     destino:'login',
@@ -23,7 +25,16 @@ export class AppComponent {
     destino:'codigoqr',
     icono:'chatbubble',
     texto:'Escanear codigo QR',
+    },
+    {
+      destino:'login',
+      icono:'power',
+      texto:'Cerrar Sesión',
     }
+
   ]
-  constructor() {}
+
+  constructor() {
+    
+  }
 }

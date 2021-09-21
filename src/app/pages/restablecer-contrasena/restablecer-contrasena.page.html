@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar class="ion-padding encabezado">
+    <ion-title>RegistrAPP</ion-title>
+    <ion-icon slot="end" name="power"></ion-icon>
+  </ion-toolbar>
+  <ion-toolbar id="asignatura" color="d">
+    <ion-title class="ion-no-padding">Restablecer contraseña</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+
+  <ion-text >
+    <p class="ion-padding">Ingrese su email y le enviaremos un correo para restablecer su contraseña</p>
+  </ion-text>
+
+  <form #RCForm="ngForm" (ngSubmit)="onSubmit()">
+    <ion-item lines="inset" mode="md">
+      <ion-label position="floating">Email:</ion-label>
+      <ion-input inputmode="email" type="email" name="restablecer" required [(ngModel)]="email"
+        pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})">
+      </ion-input>
+    </ion-item>
+    <ion-button [disabled]="RCForm.invalid" color="duoc-amarillo" strong="true" type="submit" shape="round" expand="block" mode="md">
+      <p>Enviar email</p>
+    </ion-button>
+  </form>
+
+</ion-content>

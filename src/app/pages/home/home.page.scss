@@ -40,6 +40,10 @@ ion-col{
 #asignatura{
   background-color: #e3ae2e;
   color: white;
+  ion-title{
+    margin-left: 20px;
+    text-align: start;
+  }
 }
 
 p{
@@ -65,6 +69,7 @@ ion-card-title{
   border-top: 10px double #e3ae2e;
   border-radius: 5px;
   background-color: #012c56;
+  background: linear-gradient(90deg,#012c56 0%,#004f9e 100%);
   ion-card-title{
     font-weight: 300;
     font-size: 15px;
@@ -74,5 +79,26 @@ ion-card-title{
     font-size: 14px;
     font-style: italic;
     font-weight: 250;
+  }
+}
+
+ion-item{
+ 
+  margin-top: -10px;
+  margin-bottom: 10px;
+  a{
+    display: flex;
+    justify-content: center;
+    
+  }
+}
+
+ion-button{
+  font-style: italic;
+  color: white;
+  p{
+    font-size: 14px;
+    margin-top: 16px;
+    color: white;
   }
 }
