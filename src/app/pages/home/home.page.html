@@ -2,7 +2,7 @@
 
 <ion-content [fullscreen]="true">
     <ion-toolbar id="asignatura" color="d">
-        <ion-title>Bienvenido Carlos López</ion-title>
+        <ion-title>Bienvenido {{nombreUsuario}}</ion-title>
     </ion-toolbar>
     <ion-card>
         <ion-card-header id="card-header">
@@ -12,7 +12,7 @@
                         <img id="user" src="../assets/image/descarga.png" alt="">
                     </ion-col>
                     <ion-col size="6">
-                        <ion-card-title>Carlos López</ion-card-title>
+                        <ion-card-title>{{nombreUsuario}}</ion-card-title>
                         <ion-card-subtitle>Ingenieria informatica</ion-card-subtitle>
                     </ion-col>
                 </ion-row>

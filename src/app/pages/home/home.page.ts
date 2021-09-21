@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Asignatura } from '../../interfaces/opcionmenu';
 
 @Component({
@@ -7,6 +8,8 @@ import { Asignatura } from '../../interfaces/opcionmenu';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+
+  nombreUsuario:'';
 
   asignaturas:Asignatura[]=[
     {
@@ -23,8 +26,12 @@ export class HomePage {
     }
 ]
   
-  constructor() {
-  
+  constructor(private activeRoute: ActivatedRoute, private router:Router) {
+    this.activeRoute.queryParams.subscribe(params =>{
+      if(this.router.getCurrentNavigation().extras.state){
+        this.nombreUsuario = this.router.getCurrentNavigation().extras.state.miUsuario.username;
+      }
+    });
   }
 
 }
