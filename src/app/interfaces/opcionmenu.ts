@@ -10,3 +10,4 @@ export interface Asignatura{
     porcentaje:number;
     seccion:string;
 }
+
