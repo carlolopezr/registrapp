@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
-import { AlertController } from '@ionic/angular';
+import { AlertController, MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +13,7 @@ export class LoginPage implements OnInit {
     username: '',
     password: '',
   }
-  constructor(private router: Router, private alertController: AlertController) { }
+  constructor(private router: Router, private alertController: AlertController, private menuCtrl:MenuController) { }
 
   ngOnInit() {
   }
@@ -40,6 +40,14 @@ export class LoginPage implements OnInit {
     });
 
     await alert.present();
+  }
+
+  ionViewDidEnter(){
+    this.menuCtrl.enable(false,'first');
+  }
+
+  ionViewWillLeave(){
+    this.menuCtrl.enable(true,'first');
   }
 
 }
