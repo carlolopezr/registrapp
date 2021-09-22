@@ -22,13 +22,13 @@ export class AppComponent {
     texto:'Login',
     },
     {
-    destino:'codigoqr',
-    icono:'chatbubble',
+    destino:'',
+    icono:'qr-code-outline',
     texto:'Escanear codigo QR',
     },
     {
       destino:'login',
-      icono:'power',
+      icono:'log-out',
       texto:'Cerrar Sesión',
     }
 
