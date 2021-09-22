@@ -26,7 +26,7 @@ export class RestablecerContrasenaPage implements OnInit {
     const alert = await this.alertController.create({
 
       header: 'Email enviado correctamente',
-      message: 'Email enviado a '+ this.email,
+      message: 'Email enviado a '+ this.email + ' por favor revise su bandeja de entrada',
       buttons: [, {
           text: 'Ok',
           handler: () => {
