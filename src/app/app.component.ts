@@ -22,7 +22,7 @@ export class AppComponent {
     texto:'Login',
     },
     {
-    destino:'',
+    destino:'home',
     icono:'qr-code-outline',
     texto:'Escanear codigo QR',
     },
