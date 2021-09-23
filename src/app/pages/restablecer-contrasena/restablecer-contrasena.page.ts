@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { AlertController, MenuController } from '@ionic/angular';
 import { Router } from '@angular/router';
 
 @Component({
@@ -13,7 +13,7 @@ export class RestablecerContrasenaPage implements OnInit {
 
   email:string;
 
-  constructor( private alertController: AlertController, private router: Router) { }
+  constructor( private alertController: AlertController, private router: Router, private menuCtrl:MenuController) { }
 
   ngOnInit() {
   }
@@ -37,6 +37,14 @@ export class RestablecerContrasenaPage implements OnInit {
     });
 
     await alert.present();
+  }
+
+  ionViewDidEnter(){
+    this.menuCtrl.enable(false,'first');
+  }
+
+  ionViewWillLeave(){
+    this.menuCtrl.enable(true,'first');
   }
 
 }

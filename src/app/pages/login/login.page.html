@@ -6,23 +6,26 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <form #loginForm="ngForm" (ngSubmit)="onSubmit()" >
-    <ion-item lines="inset" mode="md">
-      <ion-label position="floating">Usuario</ion-label>
-      <ion-input inputmode="text" type="text" name="usuario" required [(ngModel)]="usuario.username"></ion-input>
-    </ion-item>
-    <ion-item lines="inset" mode="md">
-      <ion-label position="floating">Contraseña</ion-label>
-      <ion-input inputmode="text" type="password" name="password" required [(ngModel)]="usuario.password"></ion-input>
-    </ion-item>
-    <ion-button color="duoc-amarillo" strong="true" type="submit" shape="round" expand="block" mode="md">
-      <p>Ingresar</p> 
-    </ion-button>
-  </form>
-
-  <ion-text routerLink="../restablecer-contrasena" color="tertiary">
-    <p>Olvidé mi contraseña</p>
-  </ion-text>
+  <div>
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit()" >
+      <ion-item lines="inset" mode="md">
+        <ion-label position="floating">Usuario</ion-label>
+        <ion-input inputmode="text" type="text" name="usuario" required [(ngModel)]="usuario.username"></ion-input>
+      </ion-item>
+      <ion-item lines="inset" mode="md">
+        <ion-label position="floating">Contraseña</ion-label>
+        <ion-input inputmode="text" type="password" name="password" required [(ngModel)]="usuario.password"></ion-input>
+      </ion-item>
+      <ion-button class="animate__animated animate__fadeInUp" color="duoc-amarillo" strong="true" type="submit" shape="round" expand="block" mode="md">
+        <p>Ingresar</p> 
+      </ion-button>
+    </form>
+  
+    <ion-text routerLink="../restablecer-contrasena" color="tertiary">
+      <p>Olvidé mi contraseña</p>
+    </ion-text>
+  </div>
+  
 </ion-content>
 
 <app-footer></app-footer>
