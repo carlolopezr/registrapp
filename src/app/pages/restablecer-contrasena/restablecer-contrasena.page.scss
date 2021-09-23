@@ -5,8 +5,12 @@
     box-shadow: 0px 1px 10px rgba(94, 137, 253, 0.5); 
 }
 
-ion-toolbar{
+/*ion-toolbar{
     text-align: center;
+}*/
+
+ion-back-button{
+    --padding-start:0px;
 }
 
 ion-toolbar ion-icon{
