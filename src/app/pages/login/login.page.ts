@@ -35,6 +35,7 @@ export class LoginPage implements OnInit {
 
   async presentAlert() {
     const alert = await this.alertController.create({
+      mode: 'ios',
       header: 'Usuario o contraseña incorrectos',
       message: 'Por favor, ingrese un usuario y contraseña correctos',
       buttons: ['Aceptar']
