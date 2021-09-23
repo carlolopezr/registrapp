@@ -17,11 +17,6 @@ export class AppComponent {
     texto:'Home',
     },
     {
-    destino:'login',
-    icono:'person',
-    texto:'Login',
-    },
-    {
     destino:'home',
     icono:'qr-code-outline',
     texto:'Escanear codigo QR',

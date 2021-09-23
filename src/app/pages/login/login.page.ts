@@ -37,7 +37,7 @@ export class LoginPage implements OnInit {
     const alert = await this.alertController.create({
       header: 'Usuario o contraseña incorrectos',
       message: 'Por favor, ingrese un usuario y contraseña correctos',
-      buttons: ['OK']
+      buttons: ['Aceptar']
     });
 
     await alert.present();

@@ -28,7 +28,7 @@ export class RestablecerContrasenaPage implements OnInit {
       header: 'Email enviado correctamente',
       message: 'Email enviado a '+ this.email + ' por favor revise su bandeja de entrada',
       buttons: [, {
-          text: 'Ok',
+          text: 'Aceptar',
           handler: () => {
             this.router.navigate(['/login'])
           }
