@@ -11,7 +11,7 @@
 <ion-content class="ion-padding">
 
 
-  <ion-text >
+  <ion-text>
     <p class="ion-padding">Ingrese su email y le enviaremos un correo para restablecer su contraseña</p>
   </ion-text>
 
@@ -22,9 +22,11 @@
         pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})">
       </ion-input>
     </ion-item>
-    <ion-button [disabled]="RCForm.invalid" color="duoc-amarillo" strong="true" type="submit" shape="round" expand="block" mode="md">
-      <p>Enviar email</p>
-    </ion-button>
+    <div class="animate__animated animate__fadeInUp">
+      <ion-button [disabled]="RCForm.invalid" color="duoc-amarillo" strong="true" type="submit" shape="round"
+      expand="block" mode="md">
+        <p>Enviar email</p>
+      </ion-button>
+    </div>
   </form>
-
 </ion-content>
