@@ -22,9 +22,11 @@ export class RestablecerContrasenaPage implements OnInit {
     this.presentAlertConfirm();
    
   }
+
   async presentAlertConfirm() {
     const alert = await this.alertController.create({
 
+      mode: 'ios',
       header: 'Email enviado correctamente',
       message: 'Email enviado a '+ this.email + ' por favor revise su bandeja de entrada',
       buttons: [, {
@@ -35,6 +37,8 @@ export class RestablecerContrasenaPage implements OnInit {
         }
       ]
     });
+
+    
 
     await alert.present();
   }
