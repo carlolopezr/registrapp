@@ -4,37 +4,40 @@
     <ion-toolbar id="asignatura" color="d">
         <ion-title class="ion-no-padding" >Bienvenido {{nombreUsuario}}</ion-title>
     </ion-toolbar>
-    <ion-card>
-        <ion-card-header id="card-header">
-            <ion-grid fixed>
-                <ion-row>
-                    <ion-col size="4">
-                        <img id="user" src="../assets/image/descarga.png" alt="">
-                    </ion-col>
-                    <ion-col size="6">
-                        <ion-card-title>{{nombreUsuario}}</ion-card-title>
-                        <ion-card-subtitle>Ingenieria informatica</ion-card-subtitle>
-                    </ion-col>
-                </ion-row>
-            </ion-grid>    
-        </ion-card-header>
-    </ion-card>
-    <ion-list lines="none">
-        <ion-item>
-            <ion-grid fixed>
-                <ion-row>
-                    <ion-col size="2"></ion-col>
-                    <ion-col id="imghome" size="8">
-                        <div><img src="../assets/image/qricon.jpg"></div>
-                        <ion-button id="boton-qr" expand="block"  shape="round" color="duoc-amarillo">
-                          <p>Escanear codigo QR </p> 
-                        </ion-button>
-                    </ion-col>
-                    <ion-col size="2"></ion-col>
-                </ion-row>
-            </ion-grid>
-        </ion-item>
-    </ion-list>
+    <div class="animate__animated animate__fadeInLeft">
+        <ion-card >
+            <ion-card-header  id="card-header">
+                <ion-grid fixed>
+                    <ion-row>
+                        <ion-col size="4">
+                            <img id="user" src="../assets/image/descarga.png" alt="">
+                        </ion-col>
+                        <ion-col size="6">
+                            <ion-card-title>{{nombreUsuario}}</ion-card-title>
+                            <ion-card-subtitle>Ingenieria informatica</ion-card-subtitle>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>    
+            </ion-card-header>
+        </ion-card>
+        <ion-list lines="none">
+            <ion-item>
+                <ion-grid fixed>
+                    <ion-row>
+                        <ion-col size="2"></ion-col>
+                        <ion-col id="imghome" size="8">
+                            <div><img src="../assets/image/qricon.jpg"></div>
+                            <ion-button id="boton-qr" expand="block"  shape="round" color="duoc-amarillo">
+                              <p>Escanear codigo QR </p> 
+                            </ion-button>
+                        </ion-col>
+                        <ion-col size="2"></ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-item>
+        </ion-list>
+    </div>
+    
 </ion-content>
 
 <app-footer></app-footer>
