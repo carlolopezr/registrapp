@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>categoriaComidas</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-card *ngFor="let category of categories" >
+  <ion-card-header>
+    <ion-card-title>{{category.strCategory}}</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-img (click)="onClick(category.strCategory)" [src]="category.strCategoryThumb"></ion-img>
+  </ion-card-content>
+</ion-card>
+</ion-content>

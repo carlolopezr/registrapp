@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{category}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let meal of meals" >
+    <ion-card-header>
+      <ion-card-title>{{meal.strMeal}}</ion-card-title>
+    </ion-card-header>
+    <ion-img [src]="meal.strMealThumb"></ion-img>
+    <ion-card-content (click)="onClick()">
+      Ver receta
+    </ion-card-content>
+  </ion-card>
+</ion-content>
