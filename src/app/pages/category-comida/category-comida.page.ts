@@ -27,7 +27,7 @@ export class CategoryComidaPage implements OnInit {
     });
   }
 
-  onClick(){
-    const browser = this.iab.create('https://ionicframework.com/');
+  onClick(idMeal:string){
+    const browser = this.iab.create(`https://www.themealdb.com/meal/${idMeal}`, '_system');
   }
 }

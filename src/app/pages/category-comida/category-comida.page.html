@@ -10,7 +10,7 @@
       <ion-card-title>{{meal.strMeal}}</ion-card-title>
     </ion-card-header>
     <ion-img [src]="meal.strMealThumb"></ion-img>
-    <ion-card-content (click)="onClick()">
+    <ion-card-content (click)="onClick(meal.idMeal)">
       Ver receta
     </ion-card-content>
   </ion-card>
