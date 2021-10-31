@@ -7,7 +7,7 @@
 <ion-content>
   <ion-card *ngFor="let meal of meals" >
     <ion-card-header>
-      <ion-card-title>{{meal.strMeal}}</ion-card-title>
+      <ion-card-title>{{meal.strMeal}}<ion-icon name="ellipsis-vertical" (click)="shareRecipe(meal.idMeal)"></ion-icon></ion-card-title>
     </ion-card-header>
     <ion-img [src]="meal.strMealThumb"></ion-img>
     <ion-card-content (click)="onClick(meal.idMeal)">
