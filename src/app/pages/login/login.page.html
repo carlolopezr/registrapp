@@ -17,9 +17,12 @@
         <ion-input inputmode="text" type="password" name="password" required [(ngModel)]="usuario.password"></ion-input>
       </ion-item>
       <ion-button class="animate__animated animate__fadeInUp" color="duoc-amarillo" strong="true" type="submit" shape="round" expand="block" mode="md">
-        <p>Ingresar</p> 
+        <p>Registrarse</p> 
       </ion-button>
     </form>
+    <ion-button routerLink="../iniciar-sesion" class="animate__animated animate__fadeInUp" color="duoc-amarillo" strong="true" type="submit" shape="round" expand="block" mode="md">
+      <p>Ir a iniciar Sesion</p> 
+    </ion-button>
   
     <ion-text routerLink="../restablecer-contrasena" color="tertiary">
       <p>Olvidé mi contraseña</p>

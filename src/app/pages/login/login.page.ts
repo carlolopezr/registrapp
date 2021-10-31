@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { AlertController, MenuController } from '@ionic/angular';
+import { Usuario } from '../../interfaces/opcionmenu';
+import { Storage } from '@ionic/storage-angular';
 
 
 @Component({
@@ -10,16 +12,17 @@ import { AlertController, MenuController } from '@ionic/angular';
 })
 export class LoginPage implements OnInit {
 
-  usuario = {
+  usuario:Usuario = {
     username: '',
     password: '',
+    estado:0
   }
-  constructor(private router: Router, private alertController: AlertController, private menuCtrl:MenuController) { }
+  constructor(private router: Router, private alertController: AlertController, private menuCtrl:MenuController, private storage:Storage) { }
 
   ngOnInit() {
   }
 
-  onSubmit() {
+  /*onSubmit() {
     if (this.usuario.username === "wacoldo" && this.usuario.password === "asd") {
       let navExtras: NavigationExtras = {
         state: {
@@ -31,13 +34,42 @@ export class LoginPage implements OnInit {
     else {
       this.presentAlert();
     }
+  }*/
+
+  onSubmit(){
+    this.guardarUsuario(this.usuario)
   }
 
+  //Verifica que el usuario no exista en la base de datos antes de guardarlo
+  async guardarUsuario(user:Usuario){
+    const name = await this.storage.get(user.username);
+    if(name){
+      this.presentAlert();
+    }
+    else{
+      await this.storage.set(user.username, user);
+      this.presentAlertExito();
+    }  
+  }
+
+  //Alerta por si es que existe el usuario
   async presentAlert() {
     const alert = await this.alertController.create({
       mode: 'ios',
-      header: 'Usuario o contraseña incorrectos',
-      message: 'Por favor, ingrese un usuario y contraseña correctos',
+      header: 'El usuario ya existe',
+      message: 'Escriba otro nombre de usuario',
+      buttons: ['Aceptar']
+    });
+
+    await alert.present();
+  }
+
+  //Alerta por si es que el registro es exitoso
+  async presentAlertExito() {
+    const alert = await this.alertController.create({
+      mode: 'ios',
+      header: 'Usuario registrado',
+      message: 'Usuario registrado con éxito',
       buttons: ['Aceptar']
     });
 
