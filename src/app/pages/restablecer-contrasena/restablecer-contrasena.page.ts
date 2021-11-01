@@ -11,7 +11,7 @@ export class RestablecerContrasenaPage implements OnInit {
 
   
 
-  email:string;
+  usuario:string;
 
   constructor( private alertController: AlertController, private router: Router, private menuCtrl:MenuController) { }
 
@@ -28,7 +28,7 @@ export class RestablecerContrasenaPage implements OnInit {
 
       mode: 'ios',
       header: 'Email enviado correctamente',
-      message: 'Email enviado a '+ this.email + ' por favor revise su bandeja de entrada',
+      message: 'Por favor revise su bandeja de entrada',
       buttons: [, {
           text: 'Aceptar',
           handler: () => {

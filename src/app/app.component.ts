@@ -22,11 +22,15 @@ export class AppComponent {
     texto:'Escanear codigo QR',
     },
     {
+      destino:'asistencia',
+      icono:'checkmark-done-outline',
+      texto:'Mi asistencia',
+    },
+    {
       destino:'login',
       icono:'log-out',
       texto:'Cerrar Sesión',
-    }
-
+    },
   ]
 
   constructor() {
