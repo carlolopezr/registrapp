@@ -11,3 +11,14 @@ export interface Asignatura{
     seccion:string;
 }
 
+export interface Usuario{
+    username:string;
+    password:string;
+}
+
+export interface Asistencia{
+    id: string;
+    username:string;
+    idasig: string;
+}
+

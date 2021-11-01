@@ -11,4 +11,19 @@
 
 <ion-content>
 
+  <form #loginForm="ngForm" (ngSubmit)="onSubmit()" >
+    <ion-item lines="inset" mode="md">
+      <ion-label position="floating">idasig</ion-label>
+      <ion-input inputmode="text" type="text" name="idasig" required [(ngModel)]="asistencia.idasig"></ion-input>
+    </ion-item>
+    <ion-item lines="inset" mode="md">
+      <ion-label position="floating">username</ion-label>
+      <ion-input inputmode="text" type="text" name="username" required [(ngModel)]="asistencia.username"></ion-input>
+    </ion-item>
+    
+    <ion-button class="animate__animated animate__fadeInUp" color="duoc-amarillo" strong="true" type="submit" shape="round" expand="block" mode="md">
+      <p>Crear</p> 
+    </ion-button>
+  </form>
+
 </ion-content>
