@@ -7,7 +7,7 @@
 
 <ion-content class="ion-padding">
   <div>
-    <form #loginForm="ngForm" (ngSubmit)="onSubmit()" >
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
       <ion-item lines="inset" mode="md">
         <ion-label position="floating">Usuario</ion-label>
         <ion-input inputmode="text" type="text" name="usuario" required [(ngModel)]="usuario.username"></ion-input>
@@ -16,8 +16,9 @@
         <ion-label position="floating">Contraseña</ion-label>
         <ion-input inputmode="text" type="password" name="password" required [(ngModel)]="usuario.password"></ion-input>
       </ion-item>
-      <ion-button class="animate__animated animate__fadeInUp" color="duoc-amarillo" strong="true" type="submit" shape="round" expand="block" mode="md">
-        <p>Ingresar</p> 
+      <ion-button class="animate__animated animate__fadeInUp" color="duoc-amarillo" strong="true" type="submit"
+        shape="round" expand="block" mode="md">
+        <p>Iniciar Sesión</p>
       </ion-button>
     </form>
     <ion-button routerLink="../registrar" class="animate__animated animate__fadeInUp" color="duoc-amarillo" strong="true" type="submit" shape="round" expand="block" mode="md">
