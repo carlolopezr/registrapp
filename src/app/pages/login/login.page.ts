@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationExtras, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { AlertController, MenuController } from '@ionic/angular';
 import { Usuario } from '../../interfaces/opcionmenu';
 import { Storage } from '@ionic/storage-angular';
