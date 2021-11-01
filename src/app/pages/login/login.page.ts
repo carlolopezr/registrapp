@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { AlertController, MenuController } from '@ionic/angular';
+import { Usuario } from '../../interfaces/opcionmenu';
+import { Storage } from '@ionic/storage-angular';
 
 
 @Component({
@@ -10,20 +12,29 @@ import { AlertController, MenuController } from '@ionic/angular';
 })
 export class LoginPage implements OnInit {
 
-  usuario = {
-    username: '',
-    password: '',
+  usuario:Usuario={
+    username:'',
+    password:'',
+    estado:0
   }
   constructor(private router: Router, 
     private alertController: AlertController, 
-    private menuCtrl:MenuController) { }
+    private menuCtrl:MenuController,
+    private storage:Storage) { }
 
   ngOnInit() {
 
   }
 
-  async onSubmit() {
-    if (this.usuario.username === "wacoldo" && this.usuario.password === "asd") {
+  onSubmit(){
+    this.iniciarSesion(this.usuario);
+  }
+
+  async iniciarSesion(user:Usuario){
+    const name = await this.storage.get(user.username);
+    if(name && name.password===user.password){
+      name.estado=1
+      await this.storage.set(name.username, name);
       let navExtras: NavigationExtras = {
         state: {
           miUsuario: this.usuario
@@ -31,7 +42,7 @@ export class LoginPage implements OnInit {
       }
       this.router.navigate(['/home'], navExtras);
     }
-    else {
+    else{
       this.presentAlert();
     }
   }
