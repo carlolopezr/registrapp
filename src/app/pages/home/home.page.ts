@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Asignatura } from '../../interfaces/opcionmenu';
 
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -10,7 +11,7 @@ import { Asignatura } from '../../interfaces/opcionmenu';
 export class HomePage {
 
   nombreUsuario:'';
-
+  
   asignaturas:Asignatura[]=[
     {
     nombre:'Estadistica Descriptiva',

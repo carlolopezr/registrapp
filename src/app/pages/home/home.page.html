@@ -20,7 +20,8 @@
                 </ion-grid>    
             </ion-card-header>
         </ion-card>
-        <ion-list lines="none">
+        
+        <!-- <ion-list lines="none">
             <ion-item>
                 <ion-grid fixed>
                     <ion-row>
@@ -35,8 +36,19 @@
                     </ion-row>
                 </ion-grid>
             </ion-item>
+        </ion-list> -->
+        <ion-list>
+            <ion-item>
+                <ion-label>Escanear codigo QR</ion-label>
+                <ion-icon slot="end" name="qr-code-outline"></ion-icon>
+            </ion-item>
+            <ion-item routerLink="../asistencia">
+                <ion-label>Mi asistencia</ion-label>
+                <ion-icon slot="end" name="checkmark-done-outline"></ion-icon>
+            </ion-item>
         </ion-list>
     </div>
+    
     
 </ion-content>
 
