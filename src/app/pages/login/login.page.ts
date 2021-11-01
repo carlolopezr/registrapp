@@ -14,7 +14,7 @@ export class LoginPage implements OnInit {
     username: '',
     password: '',
   }
-  constructor(private storage:Storage,private router: Router, 
+  constructor(private router: Router, 
     private alertController: AlertController, 
     private menuCtrl:MenuController) { }
 
