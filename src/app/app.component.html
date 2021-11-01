@@ -6,7 +6,7 @@
         <img id="logo" src="../assets/image/logoduoc.png" alt="">
         <img id="user" src="../assets/image/descarga.png" alt="">
         <ion-label>
-          <h2>wacoldo</h2>
+          <h2>{{usuario.username}}</h2>
           <p>Ingenieria Informática</p>
         </ion-label>
       </div>
@@ -15,6 +15,12 @@
           <ion-item [routerLink]="item.destino">
             {{item.texto}}
             <ion-icon slot="start" [name]="item.icono"></ion-icon>
+          </ion-item>
+        </ion-list>
+        <ion-list class="menu-items" lines="none">
+          <ion-item (click)="cerrarSesion()">
+            Cerrar Sesión
+            <ion-icon slot="start" name="log-out"></ion-icon>
           </ion-item>
         </ion-list>
       </ion-menu-toggle>

@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
-import { Opcionmenu } from './interfaces/opcionmenu';
+import { Opcionmenu, Usuario } from './interfaces/opcionmenu';
 import { Storage } from '@ionic/storage-angular';
+import { NavigationExtras, Router } from '@angular/router';
+import { AlertController, MenuController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-root',
@@ -9,36 +12,61 @@ import { Storage } from '@ionic/storage-angular';
 })
 export class AppComponent {
 
-  usuario:any;
-  
-  opciones:Opcionmenu[]=[
+  usuario: Usuario;
+
+  opciones: Opcionmenu[] = [
     {
-    destino:'home',
-    icono:'home',
-    texto:'Home',
+      destino: 'home',
+      icono: 'home',
+      texto: 'Home',
     },
     {
-    destino:'home',
-    icono:'qr-code-outline',
-    texto:'Escanear codigo QR',
+      destino: 'home',
+      icono: 'qr-code-outline',
+      texto: 'Escanear codigo QR',
     },
     {
-      destino:'asistencia',
-      icono:'checkmark-done-outline',
-      texto:'Mi asistencia',
+      destino: 'asistencia',
+      icono: 'checkmark-done-outline',
+      texto: 'Mi asistencia',
     },
-    {
-      destino:'login',
-      icono:'log-out',
-      texto:'Cerrar Sesión',
-    },
+    // {
+    //   destino:'login',
+    //   icono:'log-out',
+    //   texto:'Cerrar Sesión',
+    // },
   ]
 
-  constructor(private storage:Storage) {
-    
+  constructor(private storage: Storage, private router: Router, private menuCtrl: MenuController,) {
+
   }
 
   async ngOnInit() {
     await this.storage.create();
+
+    const usernames = await this.storage.keys()
+    for (let index = 0; index < usernames.length; index++) {
+      const username = usernames[index];
+      this.usuario = await this.storage.get(username)
+      if (this.usuario.estado == 1) {
+        break
+      }
+    }
+  }
+
+  async cerrarSesion() {
+    const usernames = await this.storage.keys();
+    for (let index = 0; index < usernames.length; index++) {
+      const username = usernames[index];
+      this.usuario = await this.storage.get(username)
+      if (this.usuario.estado == 1) {
+        this.usuario.estado = 0
+        await this.storage.set(this.usuario.username, this.usuario);
+        break
+      }
+
+    }
+    this.router.navigate(['/login']);
+    console.log(usernames)
   }
 }
