@@ -18,7 +18,8 @@ const routes: Routes = [
   {
     path: 'restablecer-contrasena',
     loadChildren: () => import('./pages/restablecer-contrasena/restablecer-contrasena.module').then( m => m.RestablecerContrasenaPageModule)
-  },  {
+  },
+  {
     path: 'asistencia',
     loadChildren: () => import('./pages/asistencia/asistencia.module').then( m => m.AsistenciaPageModule)
   },

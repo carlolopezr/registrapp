@@ -14,12 +14,15 @@ export class LoginPage implements OnInit {
     username: '',
     password: '',
   }
-  constructor(private router: Router, private alertController: AlertController, private menuCtrl:MenuController) { }
+  constructor(private router: Router, 
+    private alertController: AlertController, 
+    private menuCtrl:MenuController) { }
 
   ngOnInit() {
+
   }
 
-  onSubmit() {
+  async onSubmit() {
     if (this.usuario.username === "wacoldo" && this.usuario.password === "asd") {
       let navExtras: NavigationExtras = {
         state: {

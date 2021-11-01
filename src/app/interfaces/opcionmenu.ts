@@ -16,3 +16,11 @@ export interface Usuario{
     password:string;
     estado:number;
 }
+
+export interface Asistencia{
+    id: string;
+    username:string;
+    idasig: string;
+}
+
+    
