@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar class="ion-padding encabezado" color="duoc">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title id="titulo" mode="ios">
+      Registrarse   
+    </ion-title>
+  </ion-toolbar> 
+</ion-header>
+
+<ion-content>
+  <form #loginForm="ngForm" (ngSubmit)="onSubmit()" >
+    <ion-item lines="inset" mode="md">
+      <ion-label position="floating">Usuario</ion-label>
+      <ion-input inputmode="text" type="text" name="usuario" required [(ngModel)]="usuario.username"></ion-input>
+    </ion-item>
+    <ion-item lines="inset" mode="md">
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input inputmode="text" type="password" name="password" required [(ngModel)]="usuario.password"></ion-input>
+    </ion-item>
+    <ion-button class="animate__animated animate__fadeInUp" color="duoc-amarillo" strong="true" type="submit" shape="round" expand="block" mode="md">
+      <p>Registrarse</p> 
+    </ion-button>
+  </form>
+</ion-content>
+
+<app-footer></app-footer>
