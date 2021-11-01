@@ -14,6 +14,7 @@ export interface Asignatura{
 export interface Usuario{
     username:string;
     password:string;
+    estado:number;
 }
 
 export interface Asistencia{
@@ -22,3 +23,4 @@ export interface Asistencia{
     idasig: string;
 }
 
+    
