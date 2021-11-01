@@ -42,4 +42,8 @@
     --ion-color-shade: var(--ion-color-duoc-amarillo-shade);
     --ion-color-tint: var(--ion-color-duoc-amarillo-tint);
   }
+
+ion-app.cameraView, ion-app.cameraView ion-content, ion-app.cameraView .nav-decor{
+    display: none;
+  }
   

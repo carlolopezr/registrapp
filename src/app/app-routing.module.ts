@@ -32,6 +32,14 @@ const routes: Routes = [
     path: 'category-comida',
     loadChildren: () => import('./pages/category-comida/category-comida.module').then( m => m.CategoryComidaPageModule)
   },
+  {
+    path: 'scanearqr',
+    loadChildren: () => import('./pages/scanearqr/scanearqr.module').then( m => m.ScanearqrPageModule)
+  },
+  {
+    path: 'probandousuario',
+    loadChildren: () => import('./pages/probandousuario/probandousuario.module').then( m => m.ProbandousuarioPageModule)
+  },
 
 
 
