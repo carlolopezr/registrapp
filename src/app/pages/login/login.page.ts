@@ -3,6 +3,7 @@ import { NavigationExtras, Router } from '@angular/router';
 import { AlertController, MenuController } from '@ionic/angular';
 import { Usuario } from '../../interfaces/opcionmenu';
 import { Storage } from '@ionic/storage-angular';
+import { AppComponent } from '../../app.component';
 
 
 @Component({
@@ -11,7 +12,6 @@ import { Storage } from '@ionic/storage-angular';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-
   usuario:Usuario={
     username:'',
     password:'',
@@ -20,7 +20,7 @@ export class LoginPage implements OnInit {
   constructor(private router: Router, 
     private alertController: AlertController, 
     private menuCtrl:MenuController,
-    private storage:Storage) { }
+    private storage:Storage, private appc:AppComponent) { }
 
   ngOnInit() {
 
@@ -35,6 +35,7 @@ export class LoginPage implements OnInit {
     if(name && name.password===user.password){
       name.estado=1
       await this.storage.set(name.username, name);
+      this.appc.buscarUsuario();
       let navExtras: NavigationExtras = {
         state: {
           miUsuario: this.usuario

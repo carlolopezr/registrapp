@@ -12,7 +12,11 @@ import { AlertController, MenuController } from '@ionic/angular';
 })
 export class AppComponent {
 
-  usuario: Usuario;
+  usuario: Usuario={
+    username:'',
+    password:'',
+    estado:0
+  };
 
   opciones: Opcionmenu[] = [
     {
@@ -37,21 +41,13 @@ export class AppComponent {
     // },
   ]
 
-  constructor(private storage: Storage, private router: Router, private menuCtrl: MenuController,) {
+  constructor(private storage: Storage, private router: Router, private menuCtrl: MenuController) {
 
   }
 
+  
   async ngOnInit() {
     await this.storage.create();
-
-    const usernames = await this.storage.keys()
-    for (let index = 0; index < usernames.length; index++) {
-      const username = usernames[index];
-      this.usuario = await this.storage.get(username)
-      if (this.usuario.estado == 1) {
-        break
-      }
-    }
   }
 
   async cerrarSesion() {
@@ -59,7 +55,7 @@ export class AppComponent {
     for (let index = 0; index < usernames.length; index++) {
       const username = usernames[index];
       this.usuario = await this.storage.get(username)
-      if (this.usuario.estado == 1) {
+      if (this.usuario.estado === 1) {
         this.usuario.estado = 0
         await this.storage.set(this.usuario.username, this.usuario);
         break
@@ -67,6 +63,16 @@ export class AppComponent {
 
     }
     this.router.navigate(['/login']);
-    console.log(usernames)
+  }
+
+  async buscarUsuario(){
+    const usernames = await this.storage.keys()
+    for (let index = 0; index < usernames.length; index++) {
+      const username = usernames[index];
+      this.usuario = await this.storage.get(username)
+      if (this.usuario.estado === 1) {
+        break
+      }
+    }
   }
 }
