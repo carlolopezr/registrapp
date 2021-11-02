@@ -11,6 +11,7 @@ import { firebaseConfig } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestore,AngularFirestoreModule} from '@angular/fire/compat/firestore'
 import { IonicStorageModule } from '@ionic/storage-angular';
+import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
 
 
 
@@ -22,7 +23,7 @@ import { IonicStorageModule } from '@ionic/storage-angular';
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule,
     IonicStorageModule.forRoot()],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, QRScanner],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
