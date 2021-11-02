@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Asignatura } from '../../interfaces/opcionmenu';
+import { Asignatura, Asistencia, Usuario } from '../../interfaces/opcionmenu';
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
 import { AlertController } from '@ionic/angular';
+import { ObtenerUserService } from '../../services/obtener-user.service';
+import { BasedatosService } from '../../services/basedatos.service';
 
 
 @Component({
@@ -12,24 +14,19 @@ import { AlertController } from '@ionic/angular';
 })
 export class HomePage {
 
+  usuario:Usuario;
+  data:string;
+  asistencia:Asistencia;
+
   nombreUsuario: '';
 
-  asignaturas: Asignatura[] = [
-    {
-      nombre: 'Estadistica Descriptiva',
-      codigo: '2421',
-      porcentaje: 78,
-      seccion: '004D'
-    },
-    {
-      nombre: 'Arquitectura de Software',
-      codigo: 'ASY4131',
-      porcentaje: 100,
-      seccion: '002D',
-    }
-  ]
 
-  constructor(private activeRoute: ActivatedRoute, private router: Router, private qrScanner: QRScanner, private alertController:AlertController) {
+
+  constructor(private activeRoute: ActivatedRoute, private router: Router, 
+    private qrScanner: QRScanner, 
+    private alertController:AlertController,
+    public obtUser:ObtenerUserService,
+    public db:BasedatosService) {
     this.activeRoute.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state) {
         this.nombreUsuario = this.router.getCurrentNavigation().extras.state.miUsuario.username;
@@ -50,7 +47,8 @@ export class HomePage {
             scanSub.unsubscribe();
             this.qrScanner.destroy();
             this.removeCamera();
-            this.presentAlert(resp);
+            // this.presentAlert(resp);
+            this.guardarAsistencia(resp)
           });
         } else if (status.denied) {
           this.qrScanner.openSettings();
@@ -83,4 +81,16 @@ export class HomePage {
 
     await alert.present();
   }
+
+  async guardarAsistencia(data:string){
+
+    const enlace = 'asistencia';
+    this.usuario = await this.obtUser.obtenerUsuario();
+    this.asistencia.id = this.db.createID();
+    this.asistencia.username = this.usuario.username
+    this.asistencia.idasig = data;
+    this.db.createDocument<Asistencia>(this.asistencia,enlace,this.asistencia.id)
+  }
+  
+
 }
