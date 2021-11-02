@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Asignatura, Asistencia, Usuario } from '../../interfaces/opcionmenu';
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
-import { AlertController } from '@ionic/angular';
 import { ObtenerUserService } from '../../services/obtener-user.service';
 import { BasedatosService } from '../../services/basedatos.service';
+import { AlertController, MenuController,LoadingController } from '@ionic/angular';
 
 
 @Component({
@@ -13,10 +13,15 @@ import { BasedatosService } from '../../services/basedatos.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-
+  loading:any;
   usuario:Usuario;
   data:string;
-  asistencia:Asistencia;
+  asistencia:Asistencia ={
+    id:'',
+    idasig:'asd',
+    username:'wacoldo',
+
+  };
 
   nombreUsuario: '';
 
@@ -24,9 +29,10 @@ export class HomePage {
 
   constructor(private activeRoute: ActivatedRoute, private router: Router, 
     private qrScanner: QRScanner, 
-    private alertController:AlertController,
+    private ac:AlertController,
     public obtUser:ObtenerUserService,
-    public db:BasedatosService) {
+    public db:BasedatosService,
+    public lc:LoadingController) {
     this.activeRoute.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state) {
         this.nombreUsuario = this.router.getCurrentNavigation().extras.state.miUsuario.username;
@@ -44,11 +50,12 @@ export class HomePage {
 
           // start scanning
           let scanSub = this.qrScanner.scan().subscribe(resp => {
-            scanSub.unsubscribe();
-            this.qrScanner.destroy();
-            this.removeCamera();
-            // this.presentAlert(resp);
-            this.guardarAsistencia(resp)
+            this.guardarAsistencia(resp).then((_) => {
+              this.presentAlertConfirm()}).then( () =>{
+              this.removeCamera();
+              scanSub.unsubscribe();
+              this.qrScanner.destroy();
+            });
           });
         } else if (status.denied) {
           this.qrScanner.openSettings();
@@ -71,25 +78,41 @@ export class HomePage {
     (window.document.querySelector('ion-app') as HTMLElement).classList.remove('cameraView');
   }
 
-  async presentAlert(mensaje:string) {
-    const alert = await this.alertController.create({
-      mode: 'ios',
-      header: mensaje,
-      message: 'Escriba otro nombre de usuario',
-      buttons: ['Aceptar']
-    });
-
-    await alert.present();
-  }
-
   async guardarAsistencia(data:string){
-
+    
     const enlace = 'asistencia';
     this.usuario = await this.obtUser.obtenerUsuario();
     this.asistencia.id = this.db.createID();
-    this.asistencia.username = this.usuario.username
+    this.asistencia.username = this.usuario.username;
     this.asistencia.idasig = data;
-    this.db.createDocument<Asistencia>(this.asistencia,enlace,this.asistencia.id)
+    const datos = this.asistencia;
+    this.db.createDocument<Asistencia>(datos,enlace,datos.id)//.then((_) => {
+      //this.loading.dismiss();
+      //this.presentAlertConfirm()});
+  }
+
+  async presentLoading(){
+    this.loading = await this.lc.create({
+      message:'guardando asistencia',
+    });
+    await this.loading.present();
+
+  }
+
+  async presentAlertConfirm() {
+    const alert = await this.ac.create({
+
+      mode: 'ios',
+      header: 'Asistencia guardada con exito!',
+      buttons: [, {
+          text: 'Aceptar',
+        }
+      ]
+    });
+
+    
+
+    await alert.present();
   }
   
 
