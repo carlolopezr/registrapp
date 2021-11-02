@@ -42,7 +42,6 @@ export class AppComponent {
     // },
   ]
 
-<<<<<<< HEAD
   constructor(public obtenerUser:ObtenerUserService,
     private storage: Storage, 
     private router: Router, 
@@ -59,40 +58,10 @@ export class AppComponent {
     this.usuario.estado = 0;
     await this.storage.set(this.usuario.username,this.usuario)
     this.router.navigate(['/login']);
-=======
-  constructor(private storage: Storage, private router: Router, private menuCtrl: MenuController) {
 
-  }
-
-  
-  async ngOnInit() {
-    await this.storage.create();
-  }
-
-  async cerrarSesion() {
-    const usernames = await this.storage.keys();
-    for (let index = 0; index < usernames.length; index++) {
-      const username = usernames[index];
-      this.usuario = await this.storage.get(username)
-      if (this.usuario.estado === 1) {
-        this.usuario.estado = 0
-        await this.storage.set(this.usuario.username, this.usuario);
-        break
-      }
-
-    }
-    this.router.navigate(['/login']);
   }
 
   async buscarUsuario(){
-    const usernames = await this.storage.keys()
-    for (let index = 0; index < usernames.length; index++) {
-      const username = usernames[index];
-      this.usuario = await this.storage.get(username)
-      if (this.usuario.estado === 1) {
-        break
-      }
-    }
->>>>>>> master
+    this.usuario= await this.obtenerUser.obtenerUsuario();
   }
 }
