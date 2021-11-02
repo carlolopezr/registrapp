@@ -3,6 +3,7 @@ import { Opcionmenu, Usuario } from './interfaces/opcionmenu';
 import { Storage } from '@ionic/storage-angular';
 import { NavigationExtras, Router } from '@angular/router';
 import { AlertController, MenuController } from '@ionic/angular';
+import { ObtenerUserService } from './services/obtener-user.service';
 
 
 @Component({
@@ -37,36 +38,21 @@ export class AppComponent {
     // },
   ]
 
-  constructor(private storage: Storage, private router: Router, private menuCtrl: MenuController,) {
+  constructor(public obtenerUser:ObtenerUserService,
+    private storage: Storage, 
+    private router: Router, 
+    private menuCtrl: MenuController,) {
 
   }
 
-  async ngOnInit() {
+   async ngOnInit() {
     await this.storage.create();
-
-    const usernames = await this.storage.keys()
-    for (let index = 0; index < usernames.length; index++) {
-      const username = usernames[index];
-      this.usuario = await this.storage.get(username)
-      if (this.usuario.estado == 1) {
-        break
-      }
-    }
   }
 
   async cerrarSesion() {
-    const usernames = await this.storage.keys();
-    for (let index = 0; index < usernames.length; index++) {
-      const username = usernames[index];
-      this.usuario = await this.storage.get(username)
-      if (this.usuario.estado == 1) {
-        this.usuario.estado = 0
-        await this.storage.set(this.usuario.username, this.usuario);
-        break
-      }
-
-    }
+    this.usuario= await this.obtenerUser.obtenerUsuario();
+    this.usuario.estado = 0;
+    await this.storage.set(this.usuario.username,this.usuario)
     this.router.navigate(['/login']);
-    console.log(usernames)
   }
 }
