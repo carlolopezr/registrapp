@@ -19,8 +19,9 @@ export interface Usuario{
 
 export interface Asistencia{
     id: string;
-    username:string;
     idasig: string;
+    username:string;
+    
 }
 
     
