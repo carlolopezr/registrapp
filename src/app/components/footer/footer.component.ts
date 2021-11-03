@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-footer',
@@ -8,8 +9,16 @@ import { Component, OnInit } from '@angular/core';
 export class FooterComponent implements OnInit {
 
   fecha=Date.now();
-  constructor() { }
+  constructor(private platform:Platform) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.platform.keyboardDidShow.subscribe(() => {
+      (window.document.querySelector('ion-footer') as HTMLElement).classList.add('hide');
+      // Do something with the keyboard height such as translating an input above the keyboard.
+    });
 
+    this.platform.keyboardDidHide.subscribe(() => {
+      (window.document.querySelector('ion-footer') as HTMLElement).classList.remove('hide');
+    });
+  }
 }
