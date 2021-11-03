@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { LoginguardGuard } from './guards/loginguard.guard';
 
 const routes: Routes = [
   {
@@ -21,17 +22,18 @@ const routes: Routes = [
   },
   {
     path: 'asistencia',
-    loadChildren: () => import('./pages/asistencia/asistencia.module').then( m => m.AsistenciaPageModule)
+    loadChildren: () => import('./pages/asistencia/asistencia.module').then( m => m.AsistenciaPageModule),
+    canActivate:[LoginguardGuard]
   },
   {
     path: 'registrar',
     loadChildren: () => import('./pages/registrar/registrar.module').then( m => m.RegistrarPageModule)
-  },  {
-    path: 'cursos',
-    loadChildren: () => import('./pages/cursos/cursos.module').then( m => m.CursosPageModule)
   },
-
-
+  {
+    path: 'cursos',
+    loadChildren: () => import('./pages/cursos/cursos.module').then( m => m.CursosPageModule),
+    canActivate:[LoginguardGuard]
+  },
 
 ];
 
