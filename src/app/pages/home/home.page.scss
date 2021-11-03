@@ -108,3 +108,8 @@ ion-list{
     margin-left: 3px;
   }
 }
+
+.alert-button-group {
+  display: flex;
+  flex-direction: row !important;
+}

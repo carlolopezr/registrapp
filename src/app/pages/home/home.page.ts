@@ -108,14 +108,16 @@ export class HomePage {
 
       mode: 'ios',
       header: 'Asistencia guardada con exito!',
-      buttons: [, {
-          text: 'Aceptar',
-        }
+      cssClass: 'alert-button-group',
+      buttons: [{
+          text: 'Aceptar'
+        },
+        { text: 'Ir a asistencia',
+          handler: () =>{
+          this.router.navigate(['/asistencia']);
+        }} 
       ]
     });
-
-    
-
     await alert.present();
   }
   
