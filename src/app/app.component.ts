@@ -26,14 +26,9 @@ export class AppComponent {
       texto: 'Home',
     },
     {
-      destino: 'home',
-      icono: 'qr-code-outline',
-      texto: 'Escanear codigo QR',
-    },
-    {
-      destino: 'asistencia',
+      destino: 'cursos',
       icono: 'checkmark-done-outline',
-      texto: 'Mi asistencia',
+      texto: 'Mis cursos',
     },
     // {
     //   destino:'login',
@@ -45,8 +40,7 @@ export class AppComponent {
   constructor(public obtenerUser:ObtenerUserService,
     private storage: Storage, 
     private router: Router, 
-    private menuCtrl: MenuController,) {
-
+    private menuCtrl: MenuController) {
   }
 
    async ngOnInit() {
