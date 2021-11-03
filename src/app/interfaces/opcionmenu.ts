@@ -7,8 +7,6 @@ export interface Opcionmenu {
 export interface Asignatura{
     nombre:string;
     codigo:string;
-    porcentaje:number;
-    seccion:string;
 }
 
 export interface Usuario{
@@ -21,6 +19,7 @@ export interface Asistencia{
     id: string;
     idasig: string;
     username:string;
+    fecha:string;
     
 }
 
