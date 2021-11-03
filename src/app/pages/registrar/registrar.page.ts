@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../../interfaces/opcionmenu';
 import { AlertController, MenuController } from '@ionic/angular';
 import { Storage } from '@ionic/storage-angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registrar',
@@ -15,7 +16,7 @@ export class RegistrarPage implements OnInit {
     password: '',
     estado:0
   }
-  constructor(private alertController: AlertController, private menuCtrl:MenuController, private storage:Storage) { }
+  constructor(private alertController: AlertController, private menuCtrl:MenuController, private storage:Storage, private router:Router) { }
 
   ngOnInit() {
   }
@@ -58,7 +59,12 @@ export class RegistrarPage implements OnInit {
       mode: 'ios',
       header: 'Usuario registrado',
       message: 'Usuario registrado con éxito',
-      buttons: ['Aceptar']
+      buttons: [{
+        text: 'Aceptar',
+        handler: () =>{
+            this.router.navigate(['/login']);
+        }
+      }]
     });
 
     await alert.present();
@@ -71,7 +77,6 @@ export class RegistrarPage implements OnInit {
       message: 'Por favor, complete los campos solicitados',
       buttons: ['Aceptar']
     });
-
     await alert.present();
   }
 
