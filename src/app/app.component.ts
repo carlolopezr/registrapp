@@ -58,4 +58,6 @@ export class AppComponent {
   async buscarUsuario(){
     this.usuario= await this.obtenerUser.obtenerUsuario();
   }
+
+  
 }
