@@ -25,6 +25,7 @@ export class AsistenciaPage implements OnInit {
   }
 
   asistencias: Asistencia[];
+  asistencias2:Asistencia[]=[];
 
   loading:any;
   constructor(private router: Router,private lc: LoadingController ,
@@ -90,9 +91,16 @@ export class AsistenciaPage implements OnInit {
     const parametro ='username'
     const parametro2 = 'idasig'
     this.usuario = await this.obtenerUser.obtenerUsuario()
-    this.db.getCollectionQuery<Asistencia>(enlace, parametro, parametro2, this.usuario.username, this.codigo).subscribe( res =>{
+    this.db.getCollectionQuery<Asistencia>(enlace, parametro, this.usuario.username).subscribe( res =>{
       this.asistencias=res;
-    })
+      this.asistencias.forEach(element => { 
+        if(element.idasig==this.codigo){
+          this.asistencias2.push(element)}
+        });
+        
+      }
+
+    )
       
  }
 

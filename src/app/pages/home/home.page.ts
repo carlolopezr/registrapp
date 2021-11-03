@@ -82,7 +82,7 @@ export class HomePage {
 
   async guardarAsistencia(data:string){
     
-    const fecha = this.fecha
+    const fecha = this.fecha;
     const enlace = 'asistencia';
     this.usuario = await this.obtUser.obtenerUsuario();
     this.asistencia.id = this.db.createID();
