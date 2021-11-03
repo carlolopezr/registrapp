@@ -16,10 +16,12 @@ export class HomePage {
   loading:any;
   usuario:Usuario;
   data:string;
+  fecha=Date.now()
   asistencia:Asistencia ={
     id:'',
     idasig:'asd',
     username:'wacoldo',
+    fecha:''
 
   };
 
@@ -80,11 +82,13 @@ export class HomePage {
 
   async guardarAsistencia(data:string){
     
+    const fecha = this.fecha
     const enlace = 'asistencia';
     this.usuario = await this.obtUser.obtenerUsuario();
     this.asistencia.id = this.db.createID();
     this.asistencia.username = this.usuario.username;
     this.asistencia.idasig = data;
+    this.asistencia.fecha = fecha.toString()
     const datos = this.asistencia;
     this.db.createDocument<Asistencia>(datos,enlace,datos.id)//.then((_) => {
       //this.loading.dismiss();

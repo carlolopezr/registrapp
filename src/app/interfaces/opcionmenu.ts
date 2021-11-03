@@ -21,6 +21,7 @@ export interface Asistencia{
     id: string;
     idasig: string;
     username:string;
+    fecha:string;
     
 }
 

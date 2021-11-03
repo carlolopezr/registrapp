@@ -20,6 +20,7 @@ export class AsistenciaPage implements OnInit {
     id: '',
     username: '',
     idasig:'',
+    fecha:''
   }
 
   asistencias: Asistencia[];
