@@ -29,7 +29,10 @@ const routes: Routes = [
     path: 'registrar',
     loadChildren: () => import('./pages/registrar/registrar.module').then( m => m.RegistrarPageModule)
   },
-
+  {
+    path: 'cursos',
+    loadChildren: () => import('./pages/cursos/cursos.module').then( m => m.CursosPageModule)
+  },
 
 ];
 

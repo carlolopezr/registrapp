@@ -2,8 +2,8 @@ import { Opcionmenu, Usuario,Asistencia } from './../../interfaces/opcionmenu';
 import { Component, OnInit } from '@angular/core';
 import { BasedatosService } from '../../services/basedatos.service';
 import { AlertController, MenuController,LoadingController } from '@ionic/angular';
-import { Router } from '@angular/router';
 import { ObtenerUserService } from '../../services/obtener-user.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 
@@ -15,11 +15,13 @@ import { ObtenerUserService } from '../../services/obtener-user.service';
 export class AsistenciaPage implements OnInit {
 
   usuario:Usuario
+  codigo:string;
 
   asistencia:Asistencia = {
     id: '',
     username: '',
     idasig:'',
+    fecha:''
   }
 
   asistencias: Asistencia[];
@@ -28,7 +30,14 @@ export class AsistenciaPage implements OnInit {
   constructor(private router: Router,private lc: LoadingController ,
     private ac: AlertController, 
     public db: BasedatosService,
-    public obtenerUser:ObtenerUserService) { }
+    public obtenerUser:ObtenerUserService,
+    private ar:ActivatedRoute) {
+      this.ar.queryParams.subscribe(params => {
+        if (this.router.getCurrentNavigation().extras.state) {
+          this.codigo = this.router.getCurrentNavigation().extras.state.cod;
+        }
+      });
+     }
 
   ngOnInit() {
     this.getAsistencia()
@@ -79,8 +88,9 @@ export class AsistenciaPage implements OnInit {
   async getAsistencia(){
     const enlace = 'asistencia'
     const parametro ='username'
+    const parametro2 = 'idasig'
     this.usuario = await this.obtenerUser.obtenerUsuario()
-    this.db.getCollectionQuery<Asistencia>(enlace, parametro, this.usuario.username).subscribe( res =>{
+    this.db.getCollectionQuery<Asistencia>(enlace, parametro, parametro2, this.usuario.username, this.codigo).subscribe( res =>{
       this.asistencias=res;
     })
       
