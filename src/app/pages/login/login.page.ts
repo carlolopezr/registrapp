@@ -4,6 +4,7 @@ import { AlertController, MenuController } from '@ionic/angular';
 import { Usuario } from '../../interfaces/opcionmenu';
 import { Storage } from '@ionic/storage-angular';
 import { AppComponent } from '../../app.component';
+import { ObtenerUserService } from '../../services/obtener-user.service';
 
 
 @Component({
@@ -17,12 +18,21 @@ export class LoginPage implements OnInit {
     password:'',
     estado:0
   }
+  usuario2:Usuario={
+    username:'',
+    password:'',
+    estado:0
+  }
   constructor(private router: Router, 
     private alertController: AlertController, 
     private menuCtrl:MenuController,
-    private storage:Storage, private appc:AppComponent) { }
+    private storage:Storage, private appc:AppComponent,
+    private obtUser:ObtenerUserService) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    this.usuario = await this.obtUser.obtenerUsuario()
+    this.usuario.estado=0;
+    await this.storage.set(this.usuario.username, this.usuario);
 
   }
 
