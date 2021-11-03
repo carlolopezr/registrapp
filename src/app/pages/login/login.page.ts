@@ -33,7 +33,6 @@ export class LoginPage implements OnInit {
     this.usuario = await this.obtUser.obtenerUsuario()
     this.usuario.estado=0;
     await this.storage.set(this.usuario.username, this.usuario);
-
   }
 
   onSubmit(){
