@@ -41,12 +41,10 @@ export class BasedatosService {
 
   }
 
-  getCollectionQuery<tipo>(enlace: string, parametro: string, parametro2: string, busqueda: any, busqueda2: any)
+  getCollectionQuery<tipo>(enlace: string, parametro: string, busqueda: any)
   : Observable<tipo[]> {
     const itemsCollection: AngularFirestoreCollection<tipo> =
-      this.firestore.collection<tipo>(enlace, ref => ref.where(parametro, '==', busqueda)&& ref.where(
-        parametro2, '==',busqueda2
-      ));
+      this.firestore.collection<tipo>(enlace, ref => ref.where(parametro, '==',busqueda));
 
     return itemsCollection.valueChanges();
   }
