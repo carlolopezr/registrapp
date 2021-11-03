@@ -31,7 +31,8 @@ const routes: Routes = [
   },
   {
     path: 'cursos',
-    loadChildren: () => import('./pages/cursos/cursos.module').then( m => m.CursosPageModule)
+    loadChildren: () => import('./pages/cursos/cursos.module').then( m => m.CursosPageModule),
+    canActivate:[LoginguardGuard]
   },
 
 ];
