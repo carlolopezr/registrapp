@@ -29,11 +29,7 @@ export class LoginPage implements OnInit {
     private storage:Storage, private appc:AppComponent,
     private obtUser:ObtenerUserService) { }
 
-  async ngOnInit() {
-    this.usuario = await this.obtUser.obtenerUsuario()
-    this.usuario.estado=0;
-    await this.storage.set(this.usuario.username, this.usuario);
-
+  ngOnInit() {
   }
 
   onSubmit(){
