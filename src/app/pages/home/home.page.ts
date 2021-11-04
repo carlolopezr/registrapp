@@ -107,15 +107,9 @@ export class HomePage {
     const alert = await this.ac.create({
 
       mode: 'ios',
-      header: 'Asistencia guardada con exito!',
+      header: 'Asistencia guardada con éxito!',
       cssClass: 'alert-button-group',
-      buttons: [{
-          text: 'Aceptar'
-        },
-        { text: 'Ir a asistencia',
-          handler: () =>{
-          this.router.navigate(['/asistencia']);
-        }} 
+      buttons: [ 'Aceptar', 
       ]
     });
     await alert.present();
