@@ -21,7 +21,7 @@ export class AsistenciaPage implements OnInit {
     id: '',
     username: '',
     idasig:'',
-    fecha:''
+    fecha: 0,
   }
 
   asistencias: Asistencia[];
@@ -42,6 +42,7 @@ export class AsistenciaPage implements OnInit {
 
   ngOnInit() {
     this.getAsistencia()
+      
   }
 
   onSubmit(){
@@ -93,14 +94,17 @@ export class AsistenciaPage implements OnInit {
     this.usuario = await this.obtenerUser.obtenerUsuario()
     this.db.getCollectionQuery<Asistencia>(enlace, parametro, this.usuario.username).subscribe( res =>{
       this.asistencias=res;
+      this.asistencias.sort((a, b) => (a.fecha) - (b.fecha))
       this.asistencias.forEach(element => { 
-        if(element.idasig==this.codigo){
-          this.asistencias2.push(element)}
-        });
+        if(element.idasig==this.codigo)
+        {
+          this.asistencias2.push(element)
+        }      
+        });   
         
       }
-
     )
+    
       
  }
 

@@ -21,7 +21,7 @@ export class HomePage {
     id:'',
     idasig:'asd',
     username:'wacoldo',
-    fecha:''
+    fecha:0,
 
   };
 
@@ -88,7 +88,7 @@ export class HomePage {
     this.asistencia.id = this.db.createID();
     this.asistencia.username = this.usuario.username;
     this.asistencia.idasig = data;
-    this.asistencia.fecha = fecha.toString()
+    this.asistencia.fecha = fecha
     const datos = this.asistencia;
     this.db.createDocument<Asistencia>(datos,enlace,datos.id)//.then((_) => {
       //this.loading.dismiss();
