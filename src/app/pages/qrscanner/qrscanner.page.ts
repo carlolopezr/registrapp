@@ -1,18 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Asignatura, Asistencia, Usuario } from '../../interfaces/opcionmenu';
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
 import { ObtenerUserService } from '../../services/obtener-user.service';
 import { BasedatosService } from '../../services/basedatos.service';
-import { AlertController, MenuController,LoadingController } from '@ionic/angular';
+import { AlertController, MenuController, LoadingController } from '@ionic/angular';
+import { Platform } from '@ionic/angular';
 
 
 @Component({
-  selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  selector: 'app-qrscanner',
+  templateUrl: './qrscanner.page.html',
+  styleUrls: ['./qrscanner.page.scss'],
 })
-export class HomePage {
+export class QrscannerPage implements OnInit {
+
   loading:any;
   usuario:Usuario;
   data:string;
@@ -25,41 +27,48 @@ export class HomePage {
 
   };
 
-  nombreUsuario: '';
 
+  constructor(private activeRoute: ActivatedRoute, private router: Router,
+    private qrScanner: QRScanner,
+    private ac: AlertController,
+    public obtUser: ObtenerUserService,
+    public db: BasedatosService,
+    public lc: LoadingController, public platform:Platform) { }
 
-
-  constructor(private activeRoute: ActivatedRoute, private router: Router, 
-    private qrScanner: QRScanner, 
-    private ac:AlertController,
-    public obtUser:ObtenerUserService,
-    public db:BasedatosService,
-    public lc:LoadingController) {
-    this.activeRoute.queryParams.subscribe(params => {
-      if (this.router.getCurrentNavigation().extras.state) {
-        this.nombreUsuario = this.router.getCurrentNavigation().extras.state.miUsuario.username;
-      }
-    });
+  ngOnInit() {
+    
   }
 
-  ScanQR(){
-    this.router.navigate(['/qrscanner']);
+  ionViewWillEnter(){
+    this.qrScanner= new QRScanner;
+    this.ScanQR();
   }
-  /*ScanQR() {
+
+
+  ScanQR() {
     this.qrScanner.prepare()
       .then((status: QRScannerStatus) => {
         if (status.authorized) {
           // camera permission was granted
           this.qrScanner.show();
           this.showCamera();
+          let hBButton = this.platform.backButton.subscribe(() =>
+            {
+              this.removeCamera();
+              this.qrScanner.destroy();
+              hBButton.unsubscribe();
+              return
+            })
 
           // start scanning
           let scanSub = this.qrScanner.scan().subscribe(resp => {
             this.guardarAsistencia(resp).then((_) => {
-              this.presentAlertConfirm()}).then( () =>{
+              this.presentAlertConfirm()
+            }).then(() => {
               this.removeCamera();
               scanSub.unsubscribe();
               this.qrScanner.destroy();
+              this.router.navigate(['/home'])
             });
           });
         } else if (status.denied) {
@@ -73,9 +82,9 @@ export class HomePage {
         }
       })
       .catch((e: any) => console.log('Error is', e));
-  }*/
+  }
 
-  /*showCamera() {
+  showCamera() {
     (window.document.querySelector('ion-app') as HTMLElement).classList.add('cameraView');
   }
 
@@ -83,8 +92,8 @@ export class HomePage {
     (window.document.querySelector('ion-app') as HTMLElement).classList.remove('cameraView');
   }
 
-  async guardarAsistencia(data:string){
-    
+  async guardarAsistencia(data: string) {
+
     const fecha = this.fecha;
     const enlace = 'asistencia';
     this.usuario = await this.obtUser.obtenerUsuario();
@@ -93,14 +102,14 @@ export class HomePage {
     this.asistencia.idasig = data;
     this.asistencia.fecha = fecha
     const datos = this.asistencia;
-    this.db.createDocument<Asistencia>(datos,enlace,datos.id)//.then((_) => {
-      //this.loading.dismiss();
-      //this.presentAlertConfirm()});
+    this.db.createDocument<Asistencia>(datos, enlace, datos.id)//.then((_) => {
+    //this.loading.dismiss();
+    //this.presentAlertConfirm()});
   }
 
-  async presentLoading(){
+  async presentLoading() {
     this.loading = await this.lc.create({
-      message:'guardando asistencia',
+      message: 'guardando asistencia',
     });
     await this.loading.present();
 
@@ -112,11 +121,10 @@ export class HomePage {
       mode: 'ios',
       header: 'Asistencia guardada con éxito!',
       cssClass: 'alert-button-group',
-      buttons: [ 'Aceptar', 
+      buttons: ['Aceptar',
       ]
     });
     await alert.present();
-  }*/
-  
+  }
 
 }
