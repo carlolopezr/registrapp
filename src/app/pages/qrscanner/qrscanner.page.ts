@@ -40,7 +40,6 @@ export class QrscannerPage implements OnInit {
   }
 
   ionViewWillEnter(){
-    this.qrScanner= new QRScanner;
     this.ScanQR();
   }
 
@@ -54,10 +53,11 @@ export class QrscannerPage implements OnInit {
           this.showCamera();
           let hBButton = this.platform.backButton.subscribe(() =>
             {
-              this.removeCamera();
-              this.qrScanner.destroy();
-              hBButton.unsubscribe();
-              return
+              this.removeCamera();  //hide camera
+              this.qrScanner.hide();  //hide camera
+              scanSub.unsubscribe() //stop scanning
+              this.qrScanner.destroy();   //destroy scanner instance  
+              hBButton.unsubscribe(); //stop backbutton
             })
 
           // start scanning
@@ -65,9 +65,11 @@ export class QrscannerPage implements OnInit {
             this.guardarAsistencia(resp).then((_) => {
               this.presentAlertConfirm()
             }).then(() => {
-              this.removeCamera();
-              scanSub.unsubscribe();
-              this.qrScanner.destroy();
+              this.removeCamera();  //hide camera
+              this.qrScanner.hide();  //hide camera
+              scanSub.unsubscribe();  //stop scanning
+              this.qrScanner.destroy(); //destroy scanner instance  
+              hBButton.unsubscribe(); //stop backbutton
               this.router.navigate(['/home'])
             });
           });
