@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
@@ -13,6 +13,9 @@ import { AngularFirestore,AngularFirestoreModule} from '@angular/fire/compat/fir
 import { IonicStorageModule } from '@ionic/storage-angular';
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
 import { FooterComponent } from './components/footer/footer.component';
+import  localeEs  from '@angular/common/locales/es'
+import { registerLocaleData} from '@angular/common'
+registerLocaleData(localeEs, 'es')
 
 
 
@@ -24,7 +27,8 @@ import { FooterComponent } from './components/footer/footer.component';
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule.enablePersistence(),
     IonicStorageModule.forRoot()],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, QRScanner],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy,} 
+    ,{provide: LOCALE_ID, useValue:'es'}, QRScanner,],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,7 +1,7 @@
-import { Opcionmenu, Usuario,Asistencia } from './../../interfaces/opcionmenu';
+import { Usuario,Asistencia } from './../../interfaces/opcionmenu';
 import { Component, OnInit } from '@angular/core';
 import { BasedatosService } from '../../services/basedatos.service';
-import { AlertController, MenuController,LoadingController } from '@ionic/angular';
+import { AlertController, LoadingController } from '@ionic/angular';
 import { ObtenerUserService } from '../../services/obtener-user.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -90,7 +90,6 @@ export class AsistenciaPage implements OnInit {
   async getAsistencia(){
     const enlace = 'asistencia'
     const parametro ='username'
-    const parametro2 = 'idasig'
     this.usuario = await this.obtenerUser.obtenerUsuario()
     this.db.getCollectionQuery<Asistencia>(enlace, parametro, this.usuario.username).subscribe( res =>{
       this.asistencias=res;
