@@ -15,6 +15,9 @@ import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
 import { FooterComponent } from './components/footer/footer.component';
 import  localeEs  from '@angular/common/locales/es'
 import { registerLocaleData} from '@angular/common'
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+import { QrscannerPage } from './pages/qrscanner/qrscanner.page';
+import { DatePipe } from '@angular/common';
 registerLocaleData(localeEs, 'es')
 
 
@@ -28,7 +31,7 @@ registerLocaleData(localeEs, 'es')
     AngularFirestoreModule.enablePersistence(),
     IonicStorageModule.forRoot()],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy,} 
-    ,{provide: LOCALE_ID, useValue:'es'}, QRScanner,],
+    ,{provide: LOCALE_ID, useValue:'es'}, QRScanner, SocialSharing, DatePipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

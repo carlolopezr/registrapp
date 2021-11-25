@@ -33,7 +33,11 @@ const routes: Routes = [
     path: 'cursos',
     loadChildren: () => import('./pages/cursos/cursos.module').then( m => m.CursosPageModule),
     canActivate:[LoginguardGuard]
+  },  {
+    path: 'qrscanner',
+    loadChildren: () => import('./pages/qrscanner/qrscanner.module').then( m => m.QrscannerPageModule)
   },
+
 
 ];
 
