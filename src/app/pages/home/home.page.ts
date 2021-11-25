@@ -5,6 +5,7 @@ import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
 import { ObtenerUserService } from '../../services/obtener-user.service';
 import { BasedatosService } from '../../services/basedatos.service';
 import { AlertController, MenuController,LoadingController } from '@ionic/angular';
+import { QrscannerPage } from '../qrscanner/qrscanner.page';
 
 
 @Component({
@@ -13,7 +14,7 @@ import { AlertController, MenuController,LoadingController } from '@ionic/angula
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  loading:any;
+  /*loading:any;
   usuario:Usuario;
   data:string;
   fecha=Date.now()
@@ -23,18 +24,13 @@ export class HomePage {
     username:'wacoldo',
     fecha:0,
 
-  };
+  };*/
 
   nombreUsuario: '';
 
 
 
-  constructor(private activeRoute: ActivatedRoute, private router: Router, 
-    private qrScanner: QRScanner, 
-    private ac:AlertController,
-    public obtUser:ObtenerUserService,
-    public db:BasedatosService,
-    public lc:LoadingController) {
+  constructor(private activeRoute: ActivatedRoute, private router: Router) {
     this.activeRoute.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state) {
         this.nombreUsuario = this.router.getCurrentNavigation().extras.state.miUsuario.username;
@@ -42,7 +38,10 @@ export class HomePage {
     });
   }
 
-  ScanQR() {
+  ScanQR(){
+    this.router.navigate(['/qrscanner']);
+  }
+  /*ScanQR() {
     this.qrScanner.prepare()
       .then((status: QRScannerStatus) => {
         if (status.authorized) {
@@ -113,7 +112,7 @@ export class HomePage {
       ]
     });
     await alert.present();
-  }
+  }*/
   
 
 }
