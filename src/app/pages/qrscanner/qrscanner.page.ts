@@ -61,7 +61,6 @@ export class QrscannerPage implements OnInit {
           let scanSub = this.qrScanner.scan().subscribe(resp => {
             this.guardarAsistencia(resp)
             .then(() => this.sendEmail(this.asistencia))
-            .then(() => this.presentAlertConfirm())
             .then(() =>{
                 this.removeCamera();  //hide camera
                 this.qrScanner.hide();  //hide camera
@@ -115,7 +114,7 @@ export class QrscannerPage implements OnInit {
     const alert = await this.ac.create({
 
       mode: 'ios',
-      header: 'Asistencia guardada con éxito!',
+      header: 'Asistencia guardada y enviada con éxito!',
       cssClass: 'alert-button-group',
       buttons: ['Aceptar',
       ]
@@ -125,7 +124,9 @@ export class QrscannerPage implements OnInit {
 
   sendEmail(data){
     const fecha = this.datePipe.transform(data.fecha,'dd/MM/yyyy');
-    this.socialSharing.shareViaEmail('Alumno: ' + data.username + ' -  Asignatura: ' + data.idasig + ' - Fecha: ' + fecha, 'Asistencia ' + fecha, ['cristianlopezr.931@gmail.com']);
+    this.socialSharing.shareViaEmail('Alumno: ' + data.username + ' -  Asignatura: ' + data.idasig + ' - Fecha: ' + fecha, 'Asistencia ' + fecha, ['cristianlopezr.931@gmail.com']).then(() =>{
+      this.presentAlertConfirm();
+    })
   }
 
 }
