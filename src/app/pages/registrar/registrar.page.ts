@@ -46,7 +46,7 @@ export class RegistrarPage implements OnInit {
     const alert = await this.alertController.create({
       mode: 'ios',
       header: 'El usuario ya existe',
-      message: 'Escriba otro nombre de usuario',
+      message: 'Ingrese otro nombre de usuario',
       buttons: ['Aceptar']
     });
 
