@@ -10,7 +10,6 @@ export class BasedatosService {
 
 
   constructor(public firestore: AngularFirestore) {
-
   }
 
   createDocument<tipo>(data: tipo, enlace: string, id: string) {

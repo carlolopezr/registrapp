@@ -9,6 +9,7 @@ export class ObtenerUserService {
 
   usuario:Usuario;
   constructor(private storage:Storage) {
+    this.storage.create()
    }
 
    async obtenerUsuario(){

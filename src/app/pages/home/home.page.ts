@@ -27,7 +27,7 @@ export class HomePage {
   };*/
 
   nombreUsuario: '';
-
+  usuario:Usuario;
 
 
   constructor(private activeRoute: ActivatedRoute, private router: Router) {
@@ -35,7 +35,7 @@ export class HomePage {
       if (this.router.getCurrentNavigation().extras.state) {
         this.nombreUsuario = this.router.getCurrentNavigation().extras.state.miUsuario.username;
       }
-    });
+    })
   }
 
   ScanQR(){

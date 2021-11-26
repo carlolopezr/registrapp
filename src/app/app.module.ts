@@ -1,7 +1,6 @@
-import { LOCALE_ID, NgModule } from '@angular/core';
+import { InjectionToken, LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouteReuseStrategy } from '@angular/router';
-
+import { RouteReuseStrategy, Router, ActivatedRoute } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
@@ -25,13 +24,12 @@ registerLocaleData(localeEs, 'es')
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), 
+  imports: [BrowserModule, IonicModule.forRoot(),
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFirestoreModule.enablePersistence(),
     IonicStorageModule.forRoot()],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy,} 
-    ,{provide: LOCALE_ID, useValue:'es'}, QRScanner, SocialSharing, DatePipe],
+    ,{provide: LOCALE_ID, useValue:'es'}, QRScanner, SocialSharing, DatePipe, AppComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

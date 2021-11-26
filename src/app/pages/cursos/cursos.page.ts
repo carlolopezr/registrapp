@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Asignatura } from '../../interfaces/opcionmenu';
 import { NavigationExtras, Router } from '@angular/router';
+import { AsistenciaPage } from '../asistencia/asistencia.page';
 
 @Component({
   selector: 'app-cursos',
@@ -31,21 +32,24 @@ export class CursosPage implements OnInit {
       codigo:'ASY4131'
     },  
   ]
-    
+  
+  static codigo:string;
 
   constructor(private router:Router) { }
 
   ngOnInit() {
   }
 
-  asistencia(codigo:string){
+  asistencia(codigo1:string){
 
-    let navExtras:NavigationExtras = {
+    /*let navExtras:NavigationExtras = {
       state: {
         cod : codigo
       }
     }
-    this.router.navigate(['/asistencia'], navExtras);
+    this.router.navigate(['/asistencia'], navExtras);*/
+    AsistenciaPage.codigo=codigo1;
+    this.router.navigate(['/asistencia'])
   }
 
 }

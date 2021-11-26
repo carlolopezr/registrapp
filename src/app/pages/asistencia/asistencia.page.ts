@@ -4,6 +4,7 @@ import { BasedatosService } from '../../services/basedatos.service';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { ObtenerUserService } from '../../services/obtener-user.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CursosPage } from '../cursos/cursos.page';
 
 
 
@@ -15,7 +16,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class AsistenciaPage implements OnInit {
 
   usuario:Usuario
-  codigo:string;
+  static codigo:string;
 
   asistencia:Asistencia = {
     id: '',
@@ -33,17 +34,17 @@ export class AsistenciaPage implements OnInit {
     public db: BasedatosService,
     public obtenerUser:ObtenerUserService,
     private ar:ActivatedRoute) {
-      this.ar.queryParams.subscribe(params => {
+      /*this.ar.queryParams.subscribe(params => {
         if (this.router.getCurrentNavigation().extras.state) {
           this.codigo = this.router.getCurrentNavigation().extras.state.cod;
         }
-      });
+      });*/
      }
 
   ngOnInit() {
     this.getAsistencia()
-      
   }
+  
 
   onSubmit(){
 
@@ -91,18 +92,21 @@ export class AsistenciaPage implements OnInit {
     const enlace = 'asistencia'
     const parametro ='username'
     this.usuario = await this.obtenerUser.obtenerUsuario()
-    this.db.getCollectionQuery<Asistencia>(enlace, parametro, this.usuario.username).subscribe( res =>{
-      this.asistencias=res;
-      this.asistencias.sort((a, b) => (a.fecha) - (b.fecha))
-      this.asistencias.forEach(element => { 
-        if(element.idasig==this.codigo)
-        {
-          this.asistencias2.push(element)
-        }      
-        });   
-        
-      }
-    )
+    if(this.usuario!=null){
+      this.db.getCollectionQuery<Asistencia>(enlace, parametro, this.usuario.username).subscribe( res =>{
+        this.asistencias=res;
+        this.asistencias.sort((a, b) => (a.fecha) - (b.fecha))
+        this.asistencias.forEach(element => { 
+          if(element.idasig==AsistenciaPage.codigo)
+          {
+            this.asistencias2.push(element)
+          }      
+          });   
+          
+        }
+      )
+    }
+   
     
       
  }
