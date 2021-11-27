@@ -1,6 +1,6 @@
 {
-	"appId": "io.ionic.starter",
-	"appName": "registrapp",
+	"appId": "com.grupo9.registrapp",
+	"appName": "RegistrAPP",
 	"webDir": "www",
 	"bundledWebRuntime": false
 }
