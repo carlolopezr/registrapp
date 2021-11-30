@@ -2,6 +2,9 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { TestBed, waitForAsync } from '@angular/core/testing';
 
 import { AppComponent } from './app.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { IonicStorageModule } from '@ionic/storage-angular';
+import { AppModule } from './app.module';
 
 describe('AppComponent', () => {
 
@@ -9,6 +12,7 @@ describe('AppComponent', () => {
 
     TestBed.configureTestingModule({
       declarations: [AppComponent],
+      imports:[AppModule],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();
   }));

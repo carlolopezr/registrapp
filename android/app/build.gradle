@@ -6,7 +6,7 @@ android {
       configurations.all {
         resolutionStrategy { force 'androidx.core:core-ktx:1.6.0' }
       }
-        applicationId "io.ionic.starter"
+        applicationId "com.grupo9.registrapp"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
