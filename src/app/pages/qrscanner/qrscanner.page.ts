@@ -124,7 +124,7 @@ export class QrscannerPage implements OnInit {
 
   sendEmail(data){
     const fecha = this.datePipe.transform(data.fecha,'dd/MM/yyyy');
-    this.socialSharing.shareViaEmail('Alumno: ' + data.username + ' -  Asignatura: ' + data.idasig + ' - Fecha: ' + fecha, 'Asistencia ' + fecha, ['cristianlopezr.931@gmail.com']).then(() =>{
+    this.socialSharing.shareViaEmail('Alumno: ' + data.username + ' -  Asignatura: ' + data.idasig + ' - Fecha: ' + fecha, 'Asistencia ' + fecha, ['']).then(() =>{
       this.presentAlertConfirm();
     })
   }
